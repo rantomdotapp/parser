@@ -1,0 +1,141 @@
+{
+  "APT": { "chain": "aptos", "symbol": "APT", "decimals": 8, "address": "0x1::aptos_coin::aptoscoin" },
+  "BLT": {
+    "chain": "aptos",
+    "symbol": "BLT",
+    "decimals": 8,
+    "address": "0xfbab9fb68bd2103925317b6a540baa20087b1e7a7a4eb90badee04abb6b5a16f::blt::blt"
+  },
+  "CAKE": {
+    "chain": "aptos",
+    "symbol": "CAKE",
+    "decimals": 8,
+    "address": "0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::cakeoft"
+  },
+  "MEE": {
+    "chain": "aptos",
+    "symbol": "MEE",
+    "decimals": 6,
+    "address": "0xe9c192ff55cffab3963c695cff6dbf9dad6aff2bb5ac19a6415cad26a81860d9::mee_coin::meecoin"
+  },
+  "MOD": {
+    "chain": "aptos",
+    "symbol": "MOD",
+    "decimals": 8,
+    "address": "0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01::mod_coin::mod"
+  },
+  "MOJO": {
+    "chain": "aptos",
+    "symbol": "MOJO",
+    "decimals": 8,
+    "address": "0x881ac202b1f1e6ad4efcff7a1d0579411533f2502417a19211cfc49751ddb5f4::coin::mojo"
+  },
+  "MOVE": {
+    "chain": "aptos",
+    "symbol": "MOVE",
+    "decimals": 8,
+    "address": "0x27fafcc4e39daac97556af8a803dbb52bcb03f0821898dc845ac54225b9793eb::move_coin::movecoin"
+  },
+  "THL": {
+    "chain": "aptos",
+    "symbol": "THL",
+    "decimals": 8,
+    "address": "0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::thl"
+  },
+  "ceBNB": {
+    "chain": "aptos",
+    "symbol": "ceBNB",
+    "decimals": 8,
+    "address": "0x8d87a65ba30e09357fa2edea2c80dbac296e5dec2b18287113500b902942929d::celer_coin_manager::bnbcoin"
+  },
+  "ceBUSD": {
+    "chain": "aptos",
+    "symbol": "ceBUSD",
+    "decimals": 8,
+    "address": "0x8d87a65ba30e09357fa2edea2c80dbac296e5dec2b18287113500b902942929d::celer_coin_manager::busdcoin"
+  },
+  "ceDAI": {
+    "chain": "aptos",
+    "symbol": "ceDAI",
+    "decimals": 8,
+    "address": "0x8d87a65ba30e09357fa2edea2c80dbac296e5dec2b18287113500b902942929d::celer_coin_manager::daicoin"
+  },
+  "ceUSDC": {
+    "chain": "aptos",
+    "symbol": "ceUSDC",
+    "decimals": 6,
+    "address": "0x8d87a65ba30e09357fa2edea2c80dbac296e5dec2b18287113500b902942929d::celer_coin_manager::usdccoin"
+  },
+  "ceUSDT": {
+    "chain": "aptos",
+    "symbol": "ceUSDT",
+    "decimals": 6,
+    "address": "0x8d87a65ba30e09357fa2edea2c80dbac296e5dec2b18287113500b902942929d::celer_coin_manager::usdtcoin"
+  },
+  "ceWBTC": {
+    "chain": "aptos",
+    "symbol": "ceWBTC",
+    "decimals": 8,
+    "address": "0x8d87a65ba30e09357fa2edea2c80dbac296e5dec2b18287113500b902942929d::celer_coin_manager::wbtccoin"
+  },
+  "ceWETH": {
+    "chain": "aptos",
+    "symbol": "ceWETH",
+    "decimals": 8,
+    "address": "0x8d87a65ba30e09357fa2edea2c80dbac296e5dec2b18287113500b902942929d::celer_coin_manager::wethcoin"
+  },
+  "lzUSDC": {
+    "chain": "aptos",
+    "symbol": "lzUSDC",
+    "decimals": 6,
+    "address": "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::usdc"
+  },
+  "lzUSDT": {
+    "chain": "aptos",
+    "symbol": "lzUSDT",
+    "decimals": 6,
+    "address": "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::usdt"
+  },
+  "lzWETH": {
+    "chain": "aptos",
+    "symbol": "lzWETH",
+    "decimals": 6,
+    "address": "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::weth"
+  },
+  "stAPT": {
+    "chain": "aptos",
+    "symbol": "stAPT",
+    "decimals": 8,
+    "address": "0xd11107bdf0d6d7040c6c0bfbdecb6545191fdf13e8d8d259952f53e1713f61b5::staked_coin::stakedaptos"
+  },
+  "tAPT": {
+    "chain": "aptos",
+    "symbol": "tAPT",
+    "decimals": 8,
+    "address": "0x84d7aeef42d38a5ffc3ccef853e1b82e4958659d16a7de736a29c55fbbeb0114::staked_aptos_coin::stakedaptoscoin"
+  },
+  "whBUSD": {
+    "chain": "aptos",
+    "symbol": "whBUSD",
+    "decimals": 8,
+    "address": "0xccc9620d38c4f3991fa68a03ad98ef3735f18d04717cb75d7a1300dd8a7eed75::coin::t"
+  },
+  "whUSDC": {
+    "chain": "aptos",
+    "symbol": "whUSDC",
+    "decimals": 6,
+    "address": "0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::t"
+  },
+  "whUSDT": {
+    "chain": "aptos",
+    "symbol": "whUSDT",
+    "decimals": 6,
+    "address": "0xa2eda21a58856fda86451436513b867c97eecb4ba099da5775520e0f7492e852::coin::t"
+  },
+  "whWETH": {
+    "chain": "aptos",
+    "symbol": "whWETH",
+    "decimals": 8,
+    "address": "0xcc8a89c8dce9693d354449f1f73e60e14e347417854f029db5bc8e7454008abb::coin::t"
+  }
+}
