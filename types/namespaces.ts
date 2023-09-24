@@ -2,7 +2,12 @@ import { Collection } from 'mongodb';
 
 import { ProtocolConfig, Token } from './configs';
 import { EventLogAction, Transaction } from './domains';
-import { AdapterParseLogOptions, ParseTransactionOptions, TransformTransactionOptions } from './options';
+import {
+  AdapterParseLogOptions,
+  ParseTransactionOptions,
+  TransformTransactionOptions,
+  WorkerRunOptions,
+} from './options';
 
 export interface IService {
   name: string;
@@ -26,6 +31,9 @@ export interface ICachingService extends IService {
 export interface IBlockchainService extends ICachingService {
   getTransaction: (chain: string, hash: string) => Promise<any>;
   getTokenInfo: (chain: string, address: string) => Promise<Token | null>;
+
+  // get latest block number from chain
+  getBlockNumber: (chain: string) => Promise<number>;
 
   // transform helpers
   transformTransaction: (options: TransformTransactionOptions) => Promise<Transaction>;
@@ -67,4 +75,11 @@ export interface IParserModule extends IModule {
   adapters: Array<IProtocolAdapter>;
 
   parseTransaction: (options: ParseTransactionOptions) => Promise<Array<Transaction>>;
+}
+
+export interface IWorkerModule extends IModule {
+  chain: string;
+  adapters: Array<IProtocolAdapter>;
+
+  run: (options: WorkerRunOptions) => Promise<void>;
 }

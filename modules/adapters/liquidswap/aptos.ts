@@ -1,6 +1,5 @@
 import BigNumber from 'bignumber.js';
 
-import { Tokens } from '../../../configs';
 import { ProtocolConfig } from '../../../types/configs';
 import { EventLogAction } from '../../../types/domains';
 import { ContextServices } from '../../../types/namespaces';

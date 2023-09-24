@@ -50,6 +50,5 @@ export interface AdapterParseLogTestCase {
 }
 
 export interface WorkerRunOptions {
-  chain: string;
-  fromLedgerVersion: string;
+  fromBlock: number;
 }

@@ -1,5 +1,4 @@
 import { Token } from './configs';
-import { AdapterParseLogOptions } from './options';
 
 export const Actions = [
   'swap',
@@ -94,4 +93,43 @@ export interface Transaction {
   blockNumber: number;
 
   actions: Array<EventLogAction>;
+}
+
+// this interface will be exactly saved in database
+export interface EventLogActionDocument {
+  // the blockchain name
+  chain: string;
+
+  // the blockchain family
+  family: string;
+
+  // the transaction sender
+  from: string;
+
+  // the transaction recipient or contract
+  to: string;
+
+  // the transaction hash
+  transactionHash: string;
+
+  timestamp: number;
+
+  blockNumber: number;
+
+  logIndex: number;
+
+  // action info
+  protocol: string;
+  action: KnownAction;
+  contract: string;
+  addresses: Array<string>;
+  tokens: Array<Token>;
+
+  // should match with tokens
+  tokenAmounts: Array<string>;
+
+  // some protocol return amount in USD
+  usdAmounts?: Array<string>;
+
+  addition?: any;
 }

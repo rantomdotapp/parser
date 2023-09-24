@@ -1,5 +1,3 @@
-import { expect } from 'chai';
-
 import { Tokens } from '../../../configs';
 import { ProtocolConfig } from '../../../types/configs';
 import { EventLogAction } from '../../../types/domains';

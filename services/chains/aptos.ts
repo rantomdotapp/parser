@@ -57,9 +57,24 @@ export class AptosBlockchainService extends CachingService implements IBlockchai
     return null;
   }
 
+  public async getBlockNumber(chain: string): Promise<number> {
+    try {
+      const response = await axios.get(EnvConfig.blockchains[chain].nodeRpc);
+      return Number(response.data.ledger_version);
+    } catch (e: any) {
+      logger.error('failed to get blockchain latest block number', {
+        service: this.name,
+        chain: chain,
+        error: e.message,
+      });
+    }
+
+    return 0;
+  }
+
   public async transformTransaction(options: TransformTransactionOptions): Promise<Transaction> {
     let to = '';
-    if (options.transaction.payload.function) {
+    if (options.transaction.payload && options.transaction.payload.function) {
       to = options.transaction.payload.function.split('::')[0];
     }
 
