@@ -4,7 +4,7 @@ import { Tokens } from '../../../configs';
 import { ProtocolConfig } from '../../../types/configs';
 import { EventLogAction } from '../../../types/domains';
 import { ContextServices } from '../../../types/namespaces';
-import {AdapterParseLogOptions, AdapterParseLogTestCase} from '../../../types/options';
+import { AdapterParseLogOptions, AdapterParseLogTestCase } from '../../../types/options';
 import ProtocolAdapter from '../adapter';
 import PancakeAdapterAptos from './aptos';
 

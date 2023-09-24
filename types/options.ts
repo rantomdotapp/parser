@@ -1,5 +1,5 @@
-import {Token} from "./configs";
-import {KnownAction} from "./domains";
+import { Token } from './configs';
+import { KnownAction } from './domains';
 
 export interface ParseTransactionOptions {
   hash: string;

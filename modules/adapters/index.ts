@@ -1,5 +1,6 @@
-import { PancakeConfigs, ThalafiConfigs } from '../../configs/protocols';
+import { LiquidswapConfigs, PancakeConfigs, ThalafiConfigs } from '../../configs/protocols';
 import { ContextServices, IProtocolAdapter } from '../../types/namespaces';
+import LiquidswapAdapter from './liquidswap';
 import PancakeAdapter from './pancake';
 import ThalafiAdapter from './thalafi';
 
@@ -12,5 +13,6 @@ export function getAdapterMapping(services: ContextServices): { [key: string]: I
   return {
     pancake: new PancakeAdapter(PancakeConfigs, services),
     thalafi: new ThalafiAdapter(ThalafiConfigs, services),
+    liquidswap: new LiquidswapAdapter(LiquidswapConfigs, services),
   };
 }

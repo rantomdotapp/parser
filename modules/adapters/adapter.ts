@@ -1,8 +1,9 @@
+import { expect } from 'chai';
+
 import { ProtocolConfig } from '../../types/configs';
 import { EventLogAction } from '../../types/domains';
 import { ContextServices, IProtocolAdapter } from '../../types/namespaces';
-import {AdapterParseLogOptions, AdapterParseLogTestCase} from '../../types/options';
-import {expect} from "chai";
+import { AdapterParseLogOptions, AdapterParseLogTestCase } from '../../types/options';
 
 export default class ProtocolAdapter implements IProtocolAdapter {
   public readonly name: string = 'adapter';

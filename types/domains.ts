@@ -1,5 +1,5 @@
 import { Token } from './configs';
-import {AdapterParseLogOptions} from "./options";
+import { AdapterParseLogOptions } from './options';
 
 export const Actions = [
   'swap',

@@ -1,10 +1,10 @@
+import { Tokens } from '../../../configs';
 import { ProtocolConfig } from '../../../types/configs';
 import { EventLogAction } from '../../../types/domains';
 import { ContextServices } from '../../../types/namespaces';
-import {AdapterParseLogOptions, AdapterParseLogTestCase} from '../../../types/options';
+import { AdapterParseLogOptions, AdapterParseLogTestCase } from '../../../types/options';
 import ProtocolAdapter from '../adapter';
 import ThalafiAdapterAptos from './aptos';
-import {Tokens} from "../../../configs";
 
 const AptosTestCases: Array<AdapterParseLogTestCase> = [
   {
@@ -16,42 +16,38 @@ const AptosTestCases: Array<AdapterParseLogTestCase> = [
       from: '0xbef0f6f38cdf921739e907b50985de393991601fd8d56e82c87cc286891397fa',
       to: '0x6970b4878c3aea96732be3f31c2dded12d94d9455ff0c76c67d84859dce35136',
       input: {
-        "function": "0x6970b4878c3aea96732be3f31c2dded12d94d9455ff0c76c67d84859dce35136::lbp_scripts::swap_exact_in",
-        "type_arguments": [
-          "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC",
-          "0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::THL",
-          "0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::THL",
-          "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC"
+        function: '0x6970b4878c3aea96732be3f31c2dded12d94d9455ff0c76c67d84859dce35136::lbp_scripts::swap_exact_in',
+        type_arguments: [
+          '0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC',
+          '0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::THL',
+          '0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::THL',
+          '0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC',
         ],
-        "arguments": [
-          "0x4dcae85fc5559071906cd5c76b7420fcbb4b0a92f00ab40ffc394aadbbff5ee9",
-          "4000000000",
-          "24493858"
-        ],
-        "type": "entry_function_payload"
+        arguments: ['0x4dcae85fc5559071906cd5c76b7420fcbb4b0a92f00ab40ffc394aadbbff5ee9', '4000000000', '24493858'],
+        type: 'entry_function_payload',
       },
       event: {
-        "guid": {
-          "creation_number": "7",
-          "account_address": "0x6970b4878c3aea96732be3f31c2dded12d94d9455ff0c76c67d84859dce35136"
+        guid: {
+          creation_number: '7',
+          account_address: '0x6970b4878c3aea96732be3f31c2dded12d94d9455ff0c76c67d84859dce35136',
         },
-        "sequence_number": "3888",
-        "type": "0x6970b4878c3aea96732be3f31c2dded12d94d9455ff0c76c67d84859dce35136::lbp::SwapEvent<0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC, 0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::THL>",
-        "data": {
-          "amount_in": "4000000000",
-          "amount_out": "24610948",
-          "balance_0": "3555928684245",
-          "balance_1": "245193377299518",
-          "creator_addr": "0x4dcae85fc5559071906cd5c76b7420fcbb4b0a92f00ab40ffc394aadbbff5ee9",
-          "fee_amount": "40000000",
-          "is_buy": false,
-          "weight_0": {
-            "v": "12912430486180711072"
+        sequence_number: '3888',
+        type: '0x6970b4878c3aea96732be3f31c2dded12d94d9455ff0c76c67d84859dce35136::lbp::SwapEvent<0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC, 0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::THL>',
+        data: {
+          amount_in: '4000000000',
+          amount_out: '24610948',
+          balance_0: '3555928684245',
+          balance_1: '245193377299518',
+          creator_addr: '0x4dcae85fc5559071906cd5c76b7420fcbb4b0a92f00ab40ffc394aadbbff5ee9',
+          fee_amount: '40000000',
+          is_buy: false,
+          weight_0: {
+            v: '12912430486180711072',
           },
-          "weight_1": {
-            "v": "5534313587528840544"
-          }
-        }
+          weight_1: {
+            v: '5534313587528840544',
+          },
+        },
       },
     },
     expected: {
@@ -70,27 +66,23 @@ const AptosTestCases: Array<AdapterParseLogTestCase> = [
       from: '0xb2139aca8b2997ad45589418cae4791e60abd5677c99c6e6a20053b32c9ae513',
       to: '0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01',
       input: {
-        "function": "0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01::psm_scripts::redeem",
-        "type_arguments": [
-          "0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::T"
-        ],
-        "arguments": [
-          "752010553"
-        ],
-        "type": "entry_function_payload"
+        function: '0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01::psm_scripts::redeem',
+        type_arguments: ['0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::T'],
+        arguments: ['752010553'],
+        type: 'entry_function_payload',
       },
       event: {
-        "guid": {
-          "creation_number": "98",
-          "account_address": "0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01"
+        guid: {
+          creation_number: '98',
+          account_address: '0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01',
         },
-        "sequence_number": "19",
-        "type": "0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01::psm::MODRedemptionEvent<0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::T>",
-        "data": {
-          "coin_amount_out": "7501305",
-          "coin_fee_amount": "18800",
-          "mod_burned": "752010553"
-        }
+        sequence_number: '19',
+        type: '0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01::psm::MODRedemptionEvent<0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::T>',
+        data: {
+          coin_amount_out: '7501305',
+          coin_fee_amount: '18800',
+          mod_burned: '752010553',
+        },
       },
     },
     expected: {
@@ -109,27 +101,23 @@ const AptosTestCases: Array<AdapterParseLogTestCase> = [
       from: '0x66c58a88956c49bd76f8548729611d0dd13d0a24812ec602d4a0037b15a89efd',
       to: '0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01',
       input: {
-        "function": "0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01::psm_scripts::mint",
-        "type_arguments": [
-          "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC"
-        ],
-        "arguments": [
-          "1"
-        ],
-        "type": "entry_function_payload"
+        function: '0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01::psm_scripts::mint',
+        type_arguments: ['0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC'],
+        arguments: ['1'],
+        type: 'entry_function_payload',
       },
       event: {
-        "guid": {
-          "creation_number": "93",
-          "account_address": "0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01"
+        guid: {
+          creation_number: '93',
+          account_address: '0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01',
         },
-        "sequence_number": "1207",
-        "type": "0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01::psm::MODMintEvent\u003C0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC\u003E",
-        "data": {
-          "coin_amount_in": "1",
-          "coin_fee_amount": "0",
-          "mod_minted": "100"
-        }
+        sequence_number: '1207',
+        type: '0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01::psm::MODMintEvent\u003C0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC\u003E',
+        data: {
+          coin_amount_in: '1',
+          coin_fee_amount: '0',
+          mod_minted: '100',
+        },
       },
     },
     expected: {
