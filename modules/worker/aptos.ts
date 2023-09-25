@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import EnvConfig from '../../configs/envConfig';
-import { getTimestamp } from '../../lib/helper';
+import { formatTime, getTimestamp } from '../../lib/helper';
 import logger from '../../lib/logger';
 import { EventLogActionDocument, Transaction } from '../../types/domains';
 import { ContextServices } from '../../types/namespaces';
@@ -63,7 +63,7 @@ export default class AptosWorkerModule extends WorkerModule {
                     transactionHash: transaction.hash,
                     blockNumber: transaction.blockNumber,
                     timestamp: transaction.timestamp,
-                    logIndex: Number(event.guid.creation_number),
+                    logIndex: Number(event.sequence_number),
 
                     protocol: action.protocol,
                     action: action.action,
@@ -80,28 +80,31 @@ export default class AptosWorkerModule extends WorkerModule {
           }
         }
 
-        await super.saveEventLogs(eventDocuments);
-        await super.saveState(startBlock);
+        // the next version
+        const syncToBlock =
+          rawTransactions.length > 0 ? Number(rawTransactions[rawTransactions.length - 1].version) : startBlock;
+
+        await super.saveEventLogs(eventDocuments, syncToBlock);
 
         const elapsed = getTimestamp() - startExeTime;
-
-        // the next version
-        const nextBlock =
-          rawTransactions.length > 0 ? Number(rawTransactions[rawTransactions.length - 1].version) : startBlock + 1;
 
         logger.info('success to index blockchain logs', {
           service: this.name,
           chain: this.chain,
           family: EnvConfig.blockchains[this.chain].family,
-          fromBlock: startBlock,
-          toBlock: nextBlock - 1,
+          toBlock: syncToBlock,
+          age: `${
+            rawTransactions.length > 0
+              ? formatTime(Math.floor(rawTransactions[rawTransactions.length - 1].timestamp) / 1000000)
+              : 'unknown'
+          }`,
           events: eventDocuments.length,
           elapsed: `${elapsed}s`,
         });
 
-        startBlock = nextBlock;
+        startBlock = syncToBlock + 1;
       } catch (e: any) {
-        logger.error('failed to get transactions', {
+        logger.error('failed to index blockchain logs', {
           service: this.name,
           chain: this.chain,
           startBlock: startBlock,

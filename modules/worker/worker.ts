@@ -41,8 +41,10 @@ export default class WorkerModule implements IWorkerModule {
     await this.startGetlog(startBlock, latestBlock);
   }
 
-  protected async saveEventLogs(events: Array<EventLogActionDocument>): Promise<void> {
+  protected async saveEventLogs(events: Array<EventLogActionDocument>, toBlock: number): Promise<void> {
     const logsCollection = await this.services.mongodb.getCollection(EnvConfig.mongodb.collections.logs);
+    const statesCollection = await this.services.mongodb.getCollection(EnvConfig.mongodb.collections.states);
+
     const operations: Array<any> = [];
     for (const event of events) {
       operations.push({
@@ -79,10 +81,7 @@ export default class WorkerModule implements IWorkerModule {
     if (operations.length > 0) {
       await logsCollection.bulkWrite(operations);
     }
-  }
 
-  protected async saveState(blockNumber: number): Promise<void> {
-    const statesCollection = await this.services.mongodb.getCollection(EnvConfig.mongodb.collections.states);
     const stateKey: string = `logs-index-${this.chain}`;
     await statesCollection.updateOne(
       {
@@ -91,7 +90,7 @@ export default class WorkerModule implements IWorkerModule {
       {
         $set: {
           name: stateKey,
-          blockNumber: blockNumber,
+          blockNumber: toBlock,
         },
       },
       {

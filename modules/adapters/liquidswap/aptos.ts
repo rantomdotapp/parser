@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js';
 
 import { ProtocolConfig } from '../../../types/configs';
-import { EventLogAction } from '../../../types/domains';
+import { EventLogAction, KnownAction } from '../../../types/domains';
 import { ContextServices } from '../../../types/namespaces';
 import { AdapterParseLogOptions } from '../../../types/options';
 import ProtocolAdapter from '../adapter';
@@ -73,6 +73,28 @@ export default class LiquidswapAdapterAptos extends ProtocolAdapter {
               tokens: [tokenIn, tokenOut],
               tokenAmounts: [amountIn, amountOut],
               readableString: `${from} swap ${amountIn} ${tokenIn.symbol} for ${amountOut} ${tokenOut.symbol} on ${this.config.protocol} chain ${chain}`,
+            };
+          } else {
+            const amount0 = new BigNumber(
+              signature === Signatures.AddLiquidityEvent ? event.data.added_x_val : event.data.returned_x_val,
+            )
+              .dividedBy(new BigNumber(10).pow(token0.decimals))
+              .toString(10);
+            const amount1 = new BigNumber(
+              signature === Signatures.AddLiquidityEvent ? event.data.added_y_val : event.data.returned_y_val,
+            )
+              .dividedBy(new BigNumber(10).pow(token1.decimals))
+              .toString(10);
+            const action: KnownAction = signature === Signatures.AddLiquidityEvent ? 'deposit' : 'withdraw';
+
+            return {
+              protocol: this.config.protocol,
+              action: action,
+              contract: event.guid.account_address,
+              addresses: [from],
+              tokens: [token0, token1],
+              tokenAmounts: [amount0, amount1],
+              readableString: `${from} ${action} ${amount0} ${token0.symbol} and ${amount1} ${token1.symbol} on ${this.config.protocol} chain ${chain}`,
             };
           }
         }
