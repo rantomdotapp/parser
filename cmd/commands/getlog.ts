@@ -1,4 +1,5 @@
 import EnvConfig from '../../configs/envConfig';
+import { sleep } from '../../lib/helper';
 import { getWorker } from '../../modules/worker';
 import { ContextServices, IWorkerModule } from '../../types/namespaces';
 import { BasicCommand } from '../basic';
@@ -15,10 +16,19 @@ export class GetlogCommand extends BasicCommand {
     const services: ContextServices = await super.getServices();
 
     const worker: IWorkerModule | null = getWorker(EnvConfig.blockchains[argv.chain], services);
-    if (worker) {
-      await worker.run({
-        fromBlock: argv.fromBlock,
-      });
+
+    while (true) {
+      if (worker) {
+        await worker.run({
+          fromBlock: argv.fromBlock,
+        });
+      }
+
+      if (argv.exit) {
+        process.exit(0);
+      }
+
+      await sleep(60);
     }
   }
 
@@ -33,6 +43,11 @@ export class GetlogCommand extends BasicCommand {
         type: 'number',
         default: 0,
         describe: 'Index logs from given block number',
+      },
+      exit: {
+        type: 'boolean',
+        default: false,
+        describe: 'Do not run worker in loop',
       },
     });
   }
