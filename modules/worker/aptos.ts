@@ -110,7 +110,7 @@ export default class AptosWorkerModule extends WorkerModule {
           startBlock: startBlock,
           error: e.message,
         });
-        return;
+        process.exit(0);
       }
     }
   }
